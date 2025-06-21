@@ -307,25 +307,33 @@
                 const button = container.querySelector('.menu-button');
                 const dropdownMenu = container.querySelector('.dropdown-menu');
 
-                button.addEventListener('click', function () {
-                    // Fechar todos os outros dropdowns abertos
+                button.addEventListener('click', function (event) {
+                    // Evita que o clique no botão se propague e acione o listener do documento
+                    event.stopPropagation(); 
+
+                    // Fecha todos os outros dropdowns abertos antes de abrir o atual
                     dropdownContainers.forEach(otherContainer => {
                         if (otherContainer !== container) {
                             otherContainer.querySelector('.dropdown-menu').classList.add('hidden');
                         }
                     });
 
-                    // Alternar a visibilidade do dropdown clicado
+                    // Alterna a visibilidade do dropdown clicado
                     dropdownMenu.classList.toggle('hidden');
                 });
+            });
 
-                // Fechar dropdown ao clicar fora de qualquer menu
-                document.addEventListener('click', function (event) {
+            // Fechar dropdown ao clicar fora de *qualquer* menu ou submenu
+            document.addEventListener('click', function (event) {
+                dropdownContainers.forEach(container => {
+                    const dropdownMenu = container.querySelector('.dropdown-menu');
+                    // Verifica se o clique não foi dentro do contêiner do dropdown (botão ou menu)
                     if (!container.contains(event.target)) {
                         dropdownMenu.classList.add('hidden');
                     }
                 });
             });
+
 
             // Código para incorporar o Google Calendar
             const calendarContainer = document.getElementById('google-calendar-container');
