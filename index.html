@@ -10,26 +10,32 @@
             theme: {
                 extend: {
                     colors: {
-                        'bombeiros-orange': '#FF8C00',
+                        'bombeiros-orange': '#FF8C00', // Laranja vibrante para o tema
                         'bombeiros-dark-orange': '#CC7000', /* Nova cor para menus principais */
-                        'bombeiros-yellow': '#FFD700',
-                        'cbmrs-blue': '#1A5276',
-                        'cbmrs-light-blue': '#4A90E2',
-                        'fire-red': '#DC2626',
+                        'bombeiros-yellow': '#FFD700', // Amarelo para títulos principais
+                        'cbmrs-blue': '#1A5276', // Azul escuro, representando o CBMRS
+                        'cbmrs-light-blue': '#4A90E2', // Um azul mais claro para destaque, se necessário
+                        'fire-red': '#DC2626', // Vermelho para elementos de fogo, se aplicável
+                        'gray-950': '#0A0A0A', /* Um tom de preto mais escuro para o fundo */
                     },
                     fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
+                        inter: ['Inter', 'sans-serif'], // Fonte Inter
+                    },
+                },
+            },
+        };
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBgGFA5jl/hByJp7RiIDiEnGoVjnGm9PYw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* Define a fonte Inter como padrão para todo o corpo e adiciona o cursor personalizado */
         body {
             font-family: 'Inter', sans-serif;
+            /* Certifique-se de ter um arquivo 'fogo.gif' na mesma pasta do seu HTML */
+            /* Ou substitua pela URL direta do GIF, se hospedado online */
+            cursor: url('fogo.gif'), auto; 
         }
 
+        /* Estilo para o plano de fundo com imagem e sobreposição */
         .hero-background {
             background-image: url('https://bombeiros.rs.gov.br/upload/recortes/202007/15105052_48738_GDO.jpg');
             background-size: cover;
@@ -39,6 +45,7 @@
             z-index: 0;
         }
 
+        /* Sobreposição um pouco mais escura para legibilidade do texto sobre a imagem */
         .hero-background::before {
             content: '';
             position: absolute;
@@ -46,8 +53,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.4); /* Sobreposição preta com 40% de opacidade */
+            z-index: -1; /* Garante que a sobreposição fique atrás do conteúdo */
         }
 
         /* Estilos para os botões de atalho dos submenus */
@@ -56,35 +63,28 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             background-color: rgba(255, 140, 0, 0.7); /* Laranja com um pouco de transparência */
         }
-
         .shortcut-button:hover {
-            background-color: rgba(255, 140, 0, 0.95);
+            background-color: rgba(255, 140, 0, 0.95); /* Laranja mais opaco ao passar o mouse */
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
+            transform: translateY(-2px); /* Reduzi um pouco o efeito de "levantar" */
         }
 
-        /* Estilo para o spinner de carregamento (mantido caso futuras funcionalidades LLM sejam adicionadas) */
+        /* Estilos para o spinner de carregamento (mantido caso futuras funcionalidades LLM sejam adicionadas) */
         .loading-spinner {
             border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #FFD700;
+            border-top: 4px solid #FFD700; /* Amarelo dos bombeiros */
             border-radius: 50%;
             width: 24px;
             height: 24px;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+<body class="bg-gray-950 text-white min-h-screen flex flex-col">
 
     <header class="bg-gray-800 py-4 shadow-lg">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
@@ -92,7 +92,7 @@
                 <img src="https://www.bombeiros.rs.gov.br/themes/sitecbmrs/images/logos/logo.png" alt="Logo CBMRS"
                     class="h-12 md:h-16 w-auto mr-4">
                 <h1
-                    class="text-3xl md:text-4xl font-extrabold text-bombeiros-yellow text-center md:text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                    class="text-xl md:text-2xl lg:text-3xl font-extrabold text-bombeiros-yellow text-center md:text-left whitespace-nowrap overflow-hidden text-ellipsis">
                     COMPANHIA DE BOMBEIRO MILITAR
                 </h1>
             </div>
@@ -101,170 +101,170 @@
 
     <nav class="bg-cbmrs-blue py-3 shadow-md">
         <div class="container mx-auto px-4">
-            <ul class="flex flex-wrap justify-center gap-x-4 gap-y-2">
+            <ul class="flex justify-between md:justify-around lg:justify-between items-center flex-nowrap overflow-x-auto">
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        EFETIVO <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-users fa-sm md:fa-md"></i> EFETIVO <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-64 md:w-96 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="https://docs.google.com/spreadsheets/d/1KSonnz8y42uMBflzRYlDkt8BO9OWiTPjd4Das0oPgqY/edit?gid=1086865597#gid=1086865597" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-users text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">RELAÇÃO EFETIVO GERAL</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1KSonnz8y42uMBflzRYlDkt8BO9OWiTPjd4Das0oPgqY/edit?gid=1086865597#gid=1086865597" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-list-ol text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">RELAÇÃO EFETIVO GERAL</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/1KSonnz8y42uMBflzRYlDkt8BO9OWiTPjd4Das0oPgqY/edit?gid=687299112#gid=687299112" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-clock text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">EFETIVO POR PERÍODO</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1KSonnz8y42uMBflzRYlDkt8BO9OWiTPjd4Das0oPgqY/edit?gid=687299112#gid=687299112" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-business-time text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">EFETIVO POR PERÍODO</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/13ZiHTHxL9Gl5DRG-Nuhy3MgjuqqYzvVVkUet6xgKRQM/edit?gid=62629923#gid=62629923" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-water text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">MERGULHADORES E CINOTÉCNICOS</span>
+                            <a href="https://docs.google.com/spreadsheets/d/13ZiHTHxL9Gl5DRG-Nuhy3MgjuqqYzvVVkUet6xgKRQM/edit?gid=62629923#gid=62629923" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-tint text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">MERGULHADORES E CINOTÉCNICOS</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/1pzSKuhnJZe0B0IKhv8J2sTQmz9LgyOkG2dunrA65J1o/edit?gid=163975323#gid=163975323" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-user-tie text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">FUNÇÕES DE CADA INTEGRANTE DA CIA</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1pzSKuhnJZe0B0IKhv8J2sTQmz9LgyOkG2dunrA65J1o/edit?gid=163975323#gid=163975323" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-id-card-alt text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">FUNÇÕES NA CIA</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        ESCALAS E MAPAS <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-calendar-week fa-sm md:fa-md"></i> ESCALAS E MAPAS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-48 md:w-64 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="https://docs.google.com/spreadsheets/d/1LC76nOlcZO-yg5oRMTslHYmVmpFvfRNIN4-pimNMGqo/edit?gid=543709939#gid=543709939" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-calendar-alt text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">ESCALA ÚNICA</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1LC76nOlcZO-yg5oRMTslHYmVmpFvfRNIN4-pimNMGqo/edit?gid=543709939#gid=543709939" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-calendar-day text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">ESCALA ÚNICA</span>
                             </a>
-                            <a href="https://drive.google.com/drive/u/0/folders/1lpicifxUZxNmydzskZRmPkitLS1Px2xR" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-map-marked-alt text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">MAPA MENSAL</span>
+                            <a href="https://drive.google.com/drive/u/0/folders/1lpicifxUZxNmydzskZRmPkitLS1Px2xR" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-location-dot text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">MAPA MENSAL</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        FÉRIAS E AFASTAMENTOS <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-sun fa-sm md:fa-md"></i> FÉRIAS E AFASTAMENTOS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-64 md:w-80 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="https://docs.google.com/spreadsheets/d/1NQ31i3W5QChjhg1g5AtjCW4Rx5dAL3r_d0Ayki92e3c/edit?gid=2047429802#gid=2047429802" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-hospital-alt text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">CONTROLE DE AFASTAMENTOS HBM/FSR</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1NQ31i3W5QChjhg1g5AtjCW4Rx5dAL3r_d0Ayki92e3c/edit?gid=2047429802#gid=2047429802" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-bed text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">AFASTAMENTOS HBM/FSR</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/1TX74kxfZ9UfjFfMzMFrUAG4MqntYeAiRyKcBnG57J1o/edit?gid=232710291#gid=232710291" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
+                            <a href="https://docs.google.com/spreadsheets/d/1TX74kxfZ9UfjFfMzMFrUAG4MqntYeAiRyKcBnG57J1o/edit?gid=232710291#gid=232710291" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-calendar-check text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">CONFIRMAÇÃO DE FÉRIAS</span>
+                                <span class="font-semibold">CONFIRMAÇÃO DE FÉRIAS</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/144g1qOiO44steK7mbICkFt-pXF_vebDqDyPmzgd22hM/edit?gid=1128532433#gid=1128532433" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-plane-departure text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">PLANO DE FÉRIAS</span>
+                            <a href="https://docs.google.com/spreadsheets/d/144g1qOiO44steK7mbICkFt-pXF_vebDqDyPmzgd22hM/edit?gid=1128532433#gid=1128532433" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-plane-slash text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">PLANO DE FÉRIAS</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        LOGÍSTICA E MATERIAL <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-boxes fa-sm md:fa-md"></i> LOGÍSTICA E MATERIAL <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-56 md:w-72 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="https://docs.google.com/spreadsheets/d/1TgsrZ-67BDQs6ruf4aB-T4o1gELk1PTINDH-pocM9_g/edit?gid=1206238668#gid=1206238668" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-clipboard-list text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">PARTES ENTREGUES A SLOG</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1TgsrZ-67BDQs6ruf4aB-T4o1gELk1PTINDH-pocM9_g/edit?gid=1206238668#gid=1206238668" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-file-contract text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">PARTES PARA SLOG</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                  <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        VIATURAS <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-car-on fa-sm md:fa-md"></i> VIATURAS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-48 md:w-64 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-truck text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">CONTROLE DE VIATURAS</span>
+                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-truck-pickup text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">CONTROLE DE VIATURAS</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        CURSOS, CERTIFICADOS E TREINAMENTOS <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-graduation-cap fa-sm md:fa-md"></i> CURSOS E TREINAMENTOS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-72 md:w-96 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="https://docs.google.com/spreadsheets/d/11KSqhhZjiUnKAqxfADJ45PwTDfL9Em3K/edit?gid=2014955697#gid=2014955697" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-certificate text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">VALIDADE CURSO CCVTE</span>
+                            <a href="https://docs.google.com/spreadsheets/d/11KSqhhZjiUnKAqxfADJ45PwTDfL9Em3K/edit?gid=2014955697#gid=2014955697" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-award text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">VALIDADE CURSO CCVTE</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/1Uqcm1ATl_i7R5J9BMK6ZZay17bghB3ijXmuR599O0A0/edit?gid=2024029627#gid=2024029927" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-flask text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">VALIDADE TOXICOLÓGICO DO EFETIVO</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1Uqcm1ATl_i7R5J9BMK6ZZay17bghB3ijXmuR599O0A0/edit?gid=2024029627#gid=2024029927" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-vial text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">VALIDADE TOXICOLÓGICO</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/12l1ckdiRDV8d1RnINcaLvWtpoVVK8Rv4msPR7gLkEy4/edit?gid=2017439007#gid=2017439007" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-chart-bar text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">ESTATÍSTICAS DE OCORRÊNCIAS</span>
+                            <a href="https://docs.google.com/spreadsheets/d/12l1ckdiRDV8d1RnINcaLvWtpoVVK8Rv4msPR7gLkEy4/edit?gid=2017439007#gid=2017439007" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-chart-pie text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">ESTATÍSTICAS DE OCORRÊNCIAS</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        MODELOS DE DOCUMENTOS E TUTORIAIS <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-folder-open fa-sm md:fa-md"></i> MODELOS E TUTORIAIS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-60 md:w-80 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-file-alt text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">MODELOS DE DOCUMENTOS</span>
+                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="far fa-file-alt text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">MODELOS DE DOCUMENTOS</span>
                             </a>
-                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-video text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">TUTORIAIS E VÍDEOS</span>
+                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-play-circle text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">TUTORIAIS E VÍDEOS</span>
                             </a>
-                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-lightbulb text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">DICAS</span>
+                            <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="far fa-lightbulb text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">DICAS</span>
                             </a>
                         </div>
                     </div>
                 </li>
 
                 <li class="relative dropdown-container">
-                    <button class="menu-button bg-bombeiros-dark-orange text-white p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-2 text-base md:text-lg font-semibold">
-                        LINKS DE ACESSO <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
+                        <i class="fas fa-link fa-sm md:fa-md"></i> LINKS DE ACESSO <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-64 md:w-80 bg-gray-800 rounded-md shadow-lg z-10 p-4">
                         <div class="grid grid-cols-1 gap-2">
-                            <a href="https://e193.cbm.rs.gov.br/" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-phone-alt text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">E-193</span>
+                            <a href="https://e193.cbm.rs.gov.br/" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-phone text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">E-193</span>
                             </a>
-                            <a href="https://intranet.cbm.rs.gov.br/" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-globe text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">INTRANET</span>
+                            <a href="https://intranet.cbm.rs.gov.br/" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="fas fa-network-wired text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">INTRANET</span>
                             </a>
-                            <a href="mailto:" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-envelope-open-text text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">E-MAIL FUNCIONAL (OUTLOOK)</span>
+                            <a href="mailto:" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="far fa-envelope text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">E-MAIL (OUTLOOK)</span>
                             </a>
-                            <a href="https://wa.me/+5555984423613" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
+                            <a href="https://wa.me/+5555984423613" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fab fa-whatsapp text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">WHATSAPP FUNCIONAL DA CIABM</span>
+                                <span class="font-semibold">WHATSAPP CIABM</span>
                             </a>
-                            <a href="https://docs.google.com/spreadsheets/d/1tO5BvhpvN3z0U8v2V7ZGiVA9tm054k1QdX2dnvMtLAM/edit?gid=693248110#gid=693248110" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center justify-center space-x-2">
-                                <i class="fas fa-comment-dots text-xl text-bombeiros-yellow"></i>
-                                <span class="text-base font-semibold text-white">CONTROLE MENSAGENS EXPRESSAS</span>
+                            <a href="https://docs.google.com/spreadsheets/d/1tO5BvhpvN3z0U8v2V7ZGiVA9tm054k1QdX2dnvMtLAM/edit?gid=693248110#gid=693248110" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
+                                <i class="far fa-comment-dots text-xl text-bombeiros-yellow"></i>
+                                <span class="font-semibold">MENSAGENS EXPRESSAS</span>
                             </a>
                         </div>
                     </div>
@@ -272,7 +272,6 @@
             </ul>
         </div>
     </nav>
-
 
     <main class="flex-grow hero-background flex items-center justify-center py-12 md:py-24">
         <div class="container mx-auto px-4 text-center relative z-10">
@@ -283,7 +282,7 @@
                 Acesse rapidamente as ferramentas e informações essenciais para o nosso dia a dia na corporação.
             </p>
         </div>
-         <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-gray-800 p-4 rounded-lg shadow-lg z-20 w-80 h-96">
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-gray-800 p-4 rounded-lg shadow-lg z-20 w-72 h-96">
             <h3 class="text-lg font-bold text-bombeiros-yellow mb-2 text-center">Calendário de Eventos</h3>
             <div id="google-calendar-container" class="w-full h-full">
                 </div>
@@ -309,18 +308,18 @@
                 const dropdownMenu = container.querySelector('.dropdown-menu');
 
                 button.addEventListener('click', function () {
-                    // Fechar todos os outros dropdowns
+                    // Fechar todos os outros dropdowns abertos
                     dropdownContainers.forEach(otherContainer => {
                         if (otherContainer !== container) {
                             otherContainer.querySelector('.dropdown-menu').classList.add('hidden');
                         }
                     });
 
-                    // Alternar visibilidade do dropdown clicado
+                    // Alternar a visibilidade do dropdown clicado
                     dropdownMenu.classList.toggle('hidden');
                 });
 
-                // Fechar dropdown ao clicar fora
+                // Fechar dropdown ao clicar fora de qualquer menu
                 document.addEventListener('click', function (event) {
                     if (!container.contains(event.target)) {
                         dropdownMenu.classList.add('hidden');
@@ -329,25 +328,19 @@
             });
 
             // Código para incorporar o Google Calendar
-            // VOCÊ PRECISA SUBSTITUIR O 'SUA_CALENDAR_ID' PELO ID REAL DO SEU CALENDÁRIO GOOGLE
-            // E AJUSTAR A URL DO IFRAME CONFORME AS INSTRUÇÕES DO GOOGLE CALENDAR
-            const calendarId = '<iframe src="https://calendar.google.com/calendar/embed?src=1ciabm1bbm%40gmail.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>'; // Substitua pelo ID do seu calendário
             const calendarContainer = document.getElementById('google-calendar-container');
+            // URL de incorporação do seu calendário Google. Ajuste os parâmetros conforme necessário.
+            // 'src=1ciabm1bbm%40gmail.com' é o ID do seu calendário.
+            const calendarSrc = 'https://calendar.google.com/calendar/embed?height=100%&wkst=1&bgcolor=%23424242&ctz=America%2FSao_Paulo&src=1ciabm1bbm%40gmail.com&color=%23FF8C00&showTitle=0&showPrint=0&showCalendars=0&showTabs=0&showNav=1&showDate=0&showTz=0';
 
-            if (calendarId && calendarContainer) {
-                // Dimensões do iframe (ajustadas para o tamanho da caixa)
-                const iframeWidth = '100%';
-                const iframeHeight = '100%';
-
-                const iframeSrc = `https://calendar.google.com/calendar/embed?src=1ciabm1bbm%40gmail.com&ctz=America%2FSao_Paulo`;
-
+            if (calendarContainer) {
                 const iframe = document.createElement('iframe');
-                iframe.src = iframeSrc;
+                iframe.src = calendarSrc;
                 iframe.style.borderWidth = '0';
-                iframe.width = iframeWidth;
-                iframe.height = iframeHeight;
+                iframe.width = '100%'; // Garante que o iframe ocupe toda a largura do seu contêiner
+                iframe.height = '100%'; // Garante que o iframe ocupe toda a altura do seu contêiner
                 iframe.frameBorder = '0';
-                iframe.scrolling = 'no';
+                iframe.scrolling = 'no'; // Evita barras de rolagem desnecessárias dentro do iframe
 
                 calendarContainer.appendChild(iframe);
             }
