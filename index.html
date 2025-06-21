@@ -30,8 +30,8 @@
         /* Define a fonte Inter como padrão para todo o corpo e adiciona o cursor personalizado */
         body {
             font-family: 'Inter', sans-serif;
-            /* Certifique-se de ter um arquivo 'fogo.gif' na mesma pasta do seu HTML */
-            /* Ou substitua pela URL direta do GIF, se hospedado online */
+            /* **IMPORTANTE:** Certifique-se de que 'fogo.gif' está na mesma pasta do seu HTML! */
+            /* Ou use uma URL completa se ele estiver hospedado online, ex: url('https://seusite.com/caminho/fogo.gif') */
             cursor: url('fogo.gif'), auto; 
         }
 
@@ -282,7 +282,7 @@
                 Acesse rapidamente as ferramentas e informações essenciais para o nosso dia a dia na corporação.
             </p>
         </div>
-        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-gray-800 p-4 rounded-lg shadow-lg z-20 w-72 h-96">
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-gray-800 p-4 rounded-lg shadow-lg z-20 w-144 h-96">
             <h3 class="text-lg font-bold text-bombeiros-yellow mb-2 text-center">Calendário de Eventos</h3>
             <div id="google-calendar-container" class="w-full h-full">
                 </div>
@@ -308,10 +308,10 @@
                 const dropdownMenu = container.querySelector('.dropdown-menu');
 
                 button.addEventListener('click', function (event) {
-                    // Evita que o clique no botão se propague e acione o listener do documento
+                    // Evita que o clique no botão se propague imediatamente para o documento
                     event.stopPropagation(); 
 
-                    // Fecha todos os outros dropdowns abertos antes de abrir o atual
+                    // Fecha todos os outros dropdowns abertos
                     dropdownContainers.forEach(otherContainer => {
                         if (otherContainer !== container) {
                             otherContainer.querySelector('.dropdown-menu').classList.add('hidden');
@@ -323,12 +323,14 @@
                 });
             });
 
-            // Fechar dropdown ao clicar fora de *qualquer* menu ou submenu
+            // Fecha qualquer dropdown aberto ao clicar em qualquer lugar FORA de um dropdown
             document.addEventListener('click', function (event) {
                 dropdownContainers.forEach(container => {
                     const dropdownMenu = container.querySelector('.dropdown-menu');
-                    // Verifica se o clique não foi dentro do contêiner do dropdown (botão ou menu)
-                    if (!container.contains(event.target)) {
+                    const button = container.querySelector('.menu-button'); // Adicionado para verificar o botão também
+
+                    // Se o clique não foi dentro do container (botão ou menu) e o menu não está oculto, oculte-o
+                    if (!container.contains(event.target) && !dropdownMenu.classList.contains('hidden')) {
                         dropdownMenu.classList.add('hidden');
                     }
                 });
@@ -337,8 +339,7 @@
 
             // Código para incorporar o Google Calendar
             const calendarContainer = document.getElementById('google-calendar-container');
-            // URL de incorporação do seu calendário Google. Ajuste os parâmetros conforme necessário.
-            // 'src=1ciabm1bbm%40gmail.com' é o ID do seu calendário.
+            // URL de incorporação do seu calendário Google. 'src=1ciabm1bbm%40gmail.com' é o ID do seu calendário.
             const calendarSrc = 'https://calendar.google.com/calendar/embed?height=100%&wkst=1&bgcolor=%23424242&ctz=America%2FSao_Paulo&src=1ciabm1bbm%40gmail.com&color=%23FF8C00&showTitle=0&showPrint=0&showCalendars=0&showTabs=0&showNav=1&showDate=0&showTz=0';
 
             if (calendarContainer) {
