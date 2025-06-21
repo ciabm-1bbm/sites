@@ -331,7 +331,7 @@
             // Código para incorporar o Google Calendar
             // VOCÊ PRECISA SUBSTITUIR O 'SUA_CALENDAR_ID' PELO ID REAL DO SEU CALENDÁRIO GOOGLE
             // E AJUSTAR A URL DO IFRAME CONFORME AS INSTRUÇÕES DO GOOGLE CALENDAR
-            const calendarId = 'YOUR_CALENDAR_ID_HERE'; // Substitua pelo ID do seu calendário
+            const calendarId = '<iframe src="https://calendar.google.com/calendar/embed?src=1ciabm1bbm%40gmail.com&ctz=America%2FSao_Paulo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>'; // Substitua pelo ID do seu calendário
             const calendarContainer = document.getElementById('google-calendar-container');
 
             if (calendarId && calendarContainer) {
@@ -339,7 +339,7 @@
                 const iframeWidth = '100%';
                 const iframeHeight = '100%';
 
-                const iframeSrc = `https://calendar.google.com/calendar/embed?height=${iframeHeight}&wkst=1&bgcolor=%23424242&ctz=America%2FSao_Paulo&src=${calendarId}&color=%23FF8C00&showTitle=0&showPrint=0&showCalendars=0&showTabs=0&showNav=1&showDate=0&showTz=0`;
+                const iframeSrc = `https://calendar.google.com/calendar/embed?src=1ciabm1bbm%40gmail.com&ctz=America%2FSao_Paulo`;
 
                 const iframe = document.createElement('iframe');
                 iframe.src = iframeSrc;
