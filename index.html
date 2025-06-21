@@ -11,12 +11,12 @@
                 extend: {
                     colors: {
                         'bombeiros-orange': '#FF8C00', // Laranja vibrante para o tema
-                        'bombeiros-dark-orange': '#CC7000', /* Nova cor para menus principais */
+                        'bombeiros-dark-orange': '#CC7000', // Laranja um pouco mais escuro para menus principais
                         'bombeiros-yellow': '#FFD700', // Amarelo para títulos principais
                         'cbmrs-blue': '#1A5276', // Azul escuro, representando o CBMRS
                         'cbmrs-light-blue': '#4A90E2', // Um azul mais claro para destaque, se necessário
                         'fire-red': '#DC2626', // Vermelho para elementos de fogo, se aplicável
-                        'gray-950': '#0A0A0A', /* Um tom de preto mais escuro para o fundo */
+                        'gray-950': '#0A0A0A', // Um tom de preto mais escuro para o fundo
                     },
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'], // Fonte Inter
@@ -27,18 +27,16 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBgGFA5jl/hByJp7RiIDiEnGoVjnGm9PYw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Define a fonte Inter como padrão para todo o corpo e adiciona o cursor personalizado */
+        /* Define a fonte Inter como padrão e adiciona o cursor de fogo */
         body {
             font-family: 'Inter', sans-serif;
-            /* **IMPORTANTE PARA O CURSOR:** */
-            /* Tente esta URL direta de um GIF público. Se funcionar, o problema é com o seu arquivo local. */
-            /* Se esta também não funcionar, pode ser uma limitação do seu sistema/navegador. */
-            cursor: url('https://i.giphy.com/media/v1.gif/giphy.gif'), auto; 
-            /* Se a URL acima não funcionar, tente descomentar a linha abaixo e use seu arquivo local: */
+            /* Tenta usar um GIF de fogo público. SE ESTE FUNCIONAR, o problema era seu arquivo local. */
+            /* Você pode substituir esta URL pela do seu 'fogo.gif' se ele estiver na mesma pasta: */
             /* cursor: url('fogo.gif'), auto; */
+            cursor: url('https://i.giphy.com/media/v1.gif/giphy.gif'), auto; /* GIF de teste do Giphy */
         }
 
-        /* Estilo para o plano de fundo com imagem e sobreposição */
+        /* Estilo para a seção principal com imagem de fundo e sobreposição */
         .hero-background {
             background-image: url('https://bombeiros.rs.gov.br/upload/recortes/202007/15105052_48738_GDO.jpg');
             background-size: cover;
@@ -46,9 +44,9 @@
             background-repeat: no-repeat;
             position: relative;
             z-index: 0;
+            min-height: 400px; /* Garante uma altura mínima para a seção principal */
         }
 
-        /* Sobreposição um pouco mais escura para legibilidade do texto sobre a imagem */
         .hero-background::before {
             content: '';
             position: absolute;
@@ -60,22 +58,22 @@
             z-index: -1; /* Garante que a sobreposição fique atrás do conteúdo */
         }
 
-        /* Estilos para os botões de atalho dos submenus */
+        /* Estilos para os botões de atalho dos submenus (laranja com transparência) */
         .shortcut-button {
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 140, 0, 0.7); /* Laranja com um pouco de transparência */
+            background-color: rgba(255, 140, 0, 0.7);
         }
         .shortcut-button:hover {
-            background-color: rgba(255, 140, 0, 0.95); /* Laranja mais opaco ao passar o mouse */
+            background-color: rgba(255, 140, 0, 0.95);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px); /* Reduzi um pouco o efeito de "levantar" */
+            transform: translateY(-2px);
         }
 
-        /* Estilos para o spinner de carregamento (mantido caso futuras funcionalidades LLM sejam adicionadas) */
+        /* Estilo para o spinner de carregamento (mantido, caso necessário para futuras funcionalidades) */
         .loading-spinner {
             border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #FFD700; /* Amarelo dos bombeiros */
+            border-top: 4px solid #FFD700;
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -89,7 +87,7 @@
 </head>
 <body class="bg-gray-950 text-white min-h-screen flex flex-col">
 
-    <header class="bg-gray-800 py-4 shadow-lg">
+    <header class="bg-gray-800 py-4 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
             <div class="flex items-center justify-center md:justify-start w-full md:w-auto mb-4 md:mb-0">
                 <img src="https://www.bombeiros.rs.gov.br/themes/sitecbmrs/images/logos/logo.png" alt="Logo CBMRS"
@@ -102,8 +100,7 @@
         </div>
     </header>
 
-    <nav class="bg-cbmrs-blue py-3 shadow-md">
-        <div class="container mx-auto px-4">
+    <nav class="bg-cbmrs-blue py-3 shadow-md sticky top-[72px] md:top-[88px] z-40"> <div class="container mx-auto px-4">
             <ul class="flex justify-between md:justify-around lg:justify-between items-center flex-nowrap overflow-x-auto">
                 <li class="relative dropdown-container">
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
