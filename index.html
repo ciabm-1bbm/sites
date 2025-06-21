@@ -30,8 +30,10 @@
         /* Define a fonte Inter como padrão para todo o corpo e adiciona o cursor personalizado */
         body {
             font-family: 'Inter', sans-serif;
-            /* **IMPORTANTE:** Certifique-se de que 'fogo.gif' está na mesma pasta do seu HTML! */
-            /* Ou use uma URL completa se ele estiver hospedado online, ex: url('https://seusite.com/caminho/fogo.gif') */
+            /* **IMPORTANTE PARA O CURSOR:** */
+            /* Certifique-se de que 'fogo.gif' está na mesma pasta do seu HTML! */
+            /* Se estiver em uma subpasta (ex: 'assets/fogo.gif'), altere para url('assets/fogo.gif') */
+            /* Se for uma URL da internet, use url('https://example.com/fogo.gif') */
             cursor: url('fogo.gif'), auto; 
         }
 
@@ -106,7 +108,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-users fa-sm md:fa-md"></i> EFETIVO <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-64 md:w-96 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="https://docs.google.com/spreadsheets/d/1KSonnz8y42uMBflzRYlDkt8BO9OWiTPjd4Das0oPgqY/edit?gid=1086865597#gid=1086865597" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-list-ol text-xl text-bombeiros-yellow"></i>
@@ -132,7 +134,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-calendar-week fa-sm md:fa-md"></i> ESCALAS E MAPAS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-48 md:w-64 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="https://docs.google.com/spreadsheets/d/1LC76nOlcZO-yg5oRMTslHYmVmpFvfRNIN4-pimNMGqo/edit?gid=543709939#gid=543709939" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-calendar-day text-xl text-bombeiros-yellow"></i>
@@ -150,7 +152,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-sun fa-sm md:fa-md"></i> FÉRIAS E AFASTAMENTOS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-64 md:w-80 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="https://docs.google.com/spreadsheets/d/1NQ31i3W5QChjhg1g5AtjCW4Rx5dAL3r_d0Ayki92e3c/edit?gid=2047429802#gid=2047429802" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-bed text-xl text-bombeiros-yellow"></i>
@@ -172,7 +174,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-boxes fa-sm md:fa-md"></i> LOGÍSTICA E MATERIAL <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-56 md:w-72 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="https://docs.google.com/spreadsheets/d/1TgsrZ-67BDQs6ruf4aB-T4o1gELk1PTINDH-pocM9_g/edit?gid=1206238668#gid=1206238668" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-file-contract text-xl text-bombeiros-yellow"></i>
@@ -186,7 +188,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-car-on fa-sm md:fa-md"></i> VIATURAS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-48 md:w-64 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-truck-pickup text-xl text-bombeiros-yellow"></i>
@@ -200,7 +202,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-graduation-cap fa-sm md:fa-md"></i> CURSOS E TREINAMENTOS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-72 md:w-96 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="https://docs.google.com/spreadsheets/d/11KSqhhZjiUnKAqxfADJ45PwTDfL9Em3K/edit?gid=2014955697#gid=2014955697" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-award text-xl text-bombeiros-yellow"></i>
@@ -222,7 +224,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-folder-open fa-sm md:fa-md"></i> MODELOS E TUTORIAIS <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-60 md:w-80 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="#" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="far fa-file-alt text-xl text-bombeiros-yellow"></i>
@@ -244,7 +246,7 @@
                     <button class="menu-button bg-bombeiros-dark-orange text-white p-2 md:p-3 rounded-lg shadow-md hover:bg-bombeiros-orange transition duration-300 transform flex items-center justify-center space-x-1 md:space-x-2 text-sm md:text-base font-semibold whitespace-nowrap">
                         <i class="fas fa-link fa-sm md:fa-md"></i> LINKS DE ACESSO <i class="fas fa-chevron-down ml-1 text-xs md:text-sm"></i>
                     </button>
-                    <div class="dropdown-menu absolute hidden top-full left-1/2 transform -translate-x-1/2 mt-1 w-64 md:w-80 bg-gray-800 rounded-md shadow-lg z-10 p-4">
+                    <div class="dropdown-menu fixed hidden top-auto mt-1 left-0 right-0 max-w-full bg-gray-800 rounded-md shadow-lg z-20 p-4 mx-auto w-fit">
                         <div class="grid grid-cols-1 gap-2">
                             <a href="https://e193.cbm.rs.gov.br/" target="_blank" class="shortcut-button block text-white p-2 rounded-lg shadow-md hover:bg-opacity-90 transition duration-300 transform flex items-center space-x-2 text-sm md:text-base">
                                 <i class="fas fa-phone text-xl text-bombeiros-yellow"></i>
@@ -308,10 +310,10 @@
                 const dropdownMenu = container.querySelector('.dropdown-menu');
 
                 button.addEventListener('click', function (event) {
-                    // Evita que o clique no botão se propague imediatamente para o documento
+                    // Impede que o clique no botão se propague imediatamente para o listener do documento
                     event.stopPropagation(); 
 
-                    // Fecha todos os outros dropdowns abertos
+                    // Fecha todos os outros dropdowns abertos antes de abrir o atual
                     dropdownContainers.forEach(otherContainer => {
                         if (otherContainer !== container) {
                             otherContainer.querySelector('.dropdown-menu').classList.add('hidden');
@@ -323,13 +325,13 @@
                 });
             });
 
-            // Fecha qualquer dropdown aberto ao clicar em qualquer lugar FORA de um dropdown
+            // Fechar qualquer dropdown aberto ao clicar em qualquer lugar FORA de um dropdown
             document.addEventListener('click', function (event) {
                 dropdownContainers.forEach(container => {
                     const dropdownMenu = container.querySelector('.dropdown-menu');
-                    const button = container.querySelector('.menu-button'); // Adicionado para verificar o botão também
+                    const button = container.querySelector('.menu-button'); 
 
-                    // Se o clique não foi dentro do container (botão ou menu) e o menu não está oculto, oculte-o
+                    // Se o clique não foi no botão do menu NEM dentro do menu dropdown, e o menu não está oculto, então oculte-o
                     if (!container.contains(event.target) && !dropdownMenu.classList.contains('hidden')) {
                         dropdownMenu.classList.add('hidden');
                     }
